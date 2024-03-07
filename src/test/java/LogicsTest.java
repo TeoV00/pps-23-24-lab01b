@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class LogicsTest {
-    private static final int KNIGHT_2_STEP = 2;
     private static final int KNIGHT_1_STEP = 1;
     final private int GAME_SIZE = 5;
     private Logics logics;
@@ -20,7 +19,6 @@ public class LogicsTest {
         Pair<Integer, Integer> initialKnightPosition = new Pair<>(centerPosition, centerPosition);
         this.logics = new LogicsImpl(GAME_SIZE, initialKnightPosition);
         findAndSaveKnightAndPawnPosition();
-        System.out.println(initialKnightPosition);
     }
 
     @Test
@@ -33,6 +31,18 @@ public class LogicsTest {
         var wrongMove = calculateNewKnightPosition(KNIGHT_1_STEP, KNIGHT_1_STEP);
         this.logics.hit(wrongMove.getX(), wrongMove.getY());
         assertFalse(this.logics.hasKnight(wrongMove.getX(), wrongMove.getY()));
+    }
+
+    @Test
+    void testKnightMoveOutOfGameSize() {
+        assertAll(
+            () -> {
+                assertThrows(IndexOutOfBoundsException.class, () -> this.logics.hit(GAME_SIZE + KNIGHT_1_STEP, GAME_SIZE + KNIGHT_1_STEP));
+            },
+            () -> {
+                assertThrows(IndexOutOfBoundsException.class, () -> this.logics.hit(-KNIGHT_1_STEP, -KNIGHT_1_STEP));
+            }
+        );
     }
 
     @Test
