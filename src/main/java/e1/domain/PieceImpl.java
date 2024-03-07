@@ -22,6 +22,9 @@ public class PieceImpl implements Piece {
 
     @Override
     public void move(int row, int col) {
+        if (!isAllowedMove(row, col)) {
+            throw new IllegalStateException("Not Allowed move: " + new Pair<>(row, col));
+        }
         this.position = new Pair<>(row, col);
     }
 
