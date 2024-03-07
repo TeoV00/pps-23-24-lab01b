@@ -1,7 +1,8 @@
-package e1;
+package e1.domain;
 
-public interface Knight {
+import e1.Pair;
 
+public interface Piece {
     /**
      *
      * @param row
@@ -22,4 +23,5 @@ public interface Knight {
      * @return current knight position
      */
     Pair<Integer, Integer> position();
+
 }
