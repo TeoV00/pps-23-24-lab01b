@@ -1,6 +1,4 @@
-import e1.Logics;
-import e1.LogicsImpl;
-import e1.Pair;
+import e1.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
