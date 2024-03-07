@@ -10,8 +10,8 @@ public enum KnightMoves {
     RIGHT_TOP(-1, 2),
     RIGHT_BOTTOM(1, 2);
 
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     KnightMoves(int x, int y) {
         this.x = x;

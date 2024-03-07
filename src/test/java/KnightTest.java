@@ -1,6 +1,7 @@
-import e1.Knight;
-import e1.KnightImpl;
 import e1.Pair;
+import e1.domain.Piece;
+import e1.domain.PiecesFactory;
+import e1.domain.PiecesFactoryImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,11 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class KnightTest {
     private final Pair<Integer, Integer> KNIGHT_POSITION = new Pair<>(4,4);
-    private Knight knight;
+    private Piece knight;
 
     @BeforeEach
     void initTest() {
-        this.knight = new KnightImpl(KNIGHT_POSITION);
+        PiecesFactory factory = new PiecesFactoryImpl();
+        this.knight = factory.makeKnight(KNIGHT_POSITION);
     }
 
     @Test
@@ -25,11 +27,11 @@ public class KnightTest {
     void testKnightAllowedMove() {
         Pair<Integer, Integer> newPosition = KnightMoves.BOTTOM_LEFT.calculateNewPosition(this.knight.position());
         assertAll(
-                () -> assertTrue(this.knight.isAllowedMove(newPosition.getX(), newPosition.getY())),
-                () -> {
-                    this.knight.move(newPosition.getX(), newPosition.getY());
-                    assertEquals(newPosition, this.knight.position());
-                }
+            () -> assertTrue(this.knight.isAllowedMove(newPosition.getX(), newPosition.getY())),
+            () -> {
+                this.knight.move(newPosition.getX(), newPosition.getY());
+                assertEquals(newPosition, this.knight.position());
+            }
         );
     }
 
