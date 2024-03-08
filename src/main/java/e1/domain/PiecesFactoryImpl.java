@@ -1,17 +1,18 @@
 package e1.domain;
 
 import e1.Pair;
+import e1.domain.pieces.knight.KnightImpl;
 import e1.domain.pieces.strategies.FixedPositionMoveStrategy;
-import e1.domain.pieces.strategies.KnightMoveStrategy;
+import e1.domain.pieces.knight.Knight;
 
 public class PiecesFactoryImpl implements PiecesFactory {
     @Override
-    public Piece makeKnight(Pair<Integer, Integer> position) {
-        return new PieceImpl(position, new KnightMoveStrategy());
+    public Knight createKnight(Pair<Integer, Integer> position) {
+        return new KnightImpl(position);
     }
 
     @Override
-    public Piece makePawn(Pair<Integer, Integer> position) {
+    public Piece createPawn(Pair<Integer, Integer> position) {
         return new PieceImpl(position, new FixedPositionMoveStrategy());
     }
 }

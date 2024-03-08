@@ -1,7 +1,7 @@
 import e1.Pair;
-import e1.domain.Piece;
 import e1.domain.PiecesFactory;
 import e1.domain.PiecesFactoryImpl;
+import e1.domain.pieces.knight.Knight;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,12 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class KnightTest {
     private final Pair<Integer, Integer> KNIGHT_POSITION = new Pair<>(4,4);
-    private Piece knight;
+    private Knight knight;
 
     @BeforeEach
     void initTest() {
         PiecesFactory factory = new PiecesFactoryImpl();
-        this.knight = factory.makeKnight(KNIGHT_POSITION);
+        this.knight = factory.createKnight(KNIGHT_POSITION);
     }
 
     @Test

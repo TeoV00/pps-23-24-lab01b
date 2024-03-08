@@ -1,6 +1,7 @@
-package e1.domain.pieces.strategies;
+package e1.domain.pieces.knight;
 
 import e1.Pair;
+import e1.domain.pieces.strategies.MoveStrategy;
 
 public class KnightMoveStrategy implements MoveStrategy {
     @Override
