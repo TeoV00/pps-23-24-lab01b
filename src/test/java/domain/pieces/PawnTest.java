@@ -1,3 +1,5 @@
+package domain.pieces;
+
 import e1.Pair;
 import e1.domain.PiecesFactory;
 import e1.domain.PiecesFactoryImpl;

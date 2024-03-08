@@ -1,3 +1,5 @@
+package domain.pieces;
+
 import e1.Pair;
 
 public enum KnightMoves {
