@@ -1,18 +1,38 @@
+import domain.pieces.KnightMoves;
 import e1.Pair;
 import e1.domain.*;
+import e1.domain.pieces.pawn.Pawn;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.function.Executable;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GameGridTest {
 
     private final int GRID_SIZE = 5;
+    private final Pair<Integer, Integer> KNIGHT_POS = new Pair<>(GRID_SIZE/2, GRID_SIZE/2);
+    private final Pair<Integer, Integer> PAWN_TO_EAT_POS = KnightMoves.BOTTOM_LEFT.calculateNewPosition(KNIGHT_POS);
     private GameGrid gameGrid;
 
     @BeforeEach
     void testGameGridCreation() {
-        this.gameGrid = new GameGridImpl(GRID_SIZE, GRID_SIZE);
+        PiecesFactory factory = new PiecesFactoryImpl();
+        Set<Pawn> pawns = new HashSet<>();
+        pawns.add(uneatablePawnWithOneMove(factory));
+        pawns.add(bottomLeftPawnToBeEaten(factory));
+        this.gameGrid = new GameGridImpl(GRID_SIZE, GRID_SIZE, factory.createKnight(KNIGHT_POS), pawns);
+    }
+
+    private Pawn uneatablePawnWithOneMove(PiecesFactory factory) {
+        return factory.createPawn(new Pair<>(KNIGHT_POS.getX() - 1, KNIGHT_POS.getY()));
+    }
+
+    private Pawn bottomLeftPawnToBeEaten(PiecesFactory factory) {
+        return factory.createPawn(PAWN_TO_EAT_POS);
     }
 
     @Test
@@ -24,5 +44,36 @@ public class GameGridTest {
     void testIfPositionInsideGameGrid() {
         var outsidePosition = new Pair<>(GRID_SIZE, GRID_SIZE);
         assertFalse(this.gameGrid.isInsideGrid(outsidePosition));
+    }
+
+    @Test
+    void testMoveKnight() {
+        var anAllowedPosition = KnightMoves.TOP_LEFT.calculateNewPosition(KNIGHT_POS);
+        this.gameGrid.moveKnight(anAllowedPosition.getX(), anAllowedPosition.getY());
+        assertTrue(this.gameGrid.hasKnight(anAllowedPosition.getX(), anAllowedPosition.getY()));
+    }
+
+    @Test
+    void testMoveKnightAndEatPawn() {
+        assertAll(
+                pawnInitiallyInPosition(PAWN_TO_EAT_POS),
+                knightMovedToPawnPosition(PAWN_TO_EAT_POS),
+                pawnEatenByKnightAndRemoved()
+        );
+    }
+
+    private Executable pawnEatenByKnightAndRemoved() {
+        return () -> assertFalse(gameGrid.hasPawn(PAWN_TO_EAT_POS.getX(), PAWN_TO_EAT_POS.getY()));
+    }
+
+    private Executable pawnInitiallyInPosition(Pair<Integer, Integer > position) {
+        return () -> assertTrue(gameGrid.hasPawn(position.getX(), position.getY()));
+    }
+
+    private Executable knightMovedToPawnPosition(Pair<Integer, Integer> position) {
+        return () -> {
+            this.gameGrid.moveKnight(position.getX(), position.getY());
+            assertTrue(this.gameGrid.hasKnight(position.getX(), position.getY()));
+        };
     }
 }

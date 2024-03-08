@@ -11,4 +11,10 @@ public interface GameGrid {
     Pair<Integer, Integer> dimensions();
 
     boolean isInsideGrid(Pair<Integer, Integer> position);
+
+    void moveKnight(int row, int col);
+
+    boolean hasKnight(int row, int col);
+
+    boolean hasPawn(int row, int col);
 }
