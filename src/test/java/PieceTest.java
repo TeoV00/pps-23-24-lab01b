@@ -21,28 +21,29 @@ public class PieceTest {
 
     @Test
     void testPieceWithOneStepMove() {
-        Piece piece = new PieceImpl(INITIAL_POSITION, (currentPos , row, col) -> {
-            return (Math.abs(row - currentPos.getX()) == ONE_STEP || Math.abs(row - currentPos.getX()) == NO_STEP) &&
-                    (Math.abs(col - currentPos.getY()) == ONE_STEP || Math.abs(col - currentPos.getY()) == NO_STEP);
-        });
+        Piece kingPiece = new PieceImpl(INITIAL_POSITION, this::kingMoveStrategy);
 
         var oneStepDiagonalMove = new Pair<>(INITIAL_POSITION.getX() + ONE_STEP, INITIAL_POSITION.getY() + ONE_STEP);
         var oneStepLeftMove = new Pair<>(INITIAL_POSITION.getX() - ONE_STEP, INITIAL_POSITION.getY());
         var wrongLeftMove = new Pair<>(INITIAL_POSITION.getX() + 2, INITIAL_POSITION.getY());
         assertAll(
-            () -> assertTrue(piece.isAllowedMove(oneStepDiagonalMove.getX(), oneStepDiagonalMove.getY())),
-            () -> assertTrue(piece.isAllowedMove(oneStepLeftMove.getX(), oneStepLeftMove.getY())),
-            () -> assertFalse(piece.isAllowedMove(wrongLeftMove.getX(), wrongLeftMove.getY()))
+            () -> assertTrue(kingPiece.isAllowedMove(oneStepDiagonalMove.getX(), oneStepDiagonalMove.getY())),
+            () -> assertTrue(kingPiece.isAllowedMove(oneStepLeftMove.getX(), oneStepLeftMove.getY())),
+            () -> assertFalse(kingPiece.isAllowedMove(wrongLeftMove.getX(), wrongLeftMove.getY()))
         );
+    }
+
+    private boolean kingMoveStrategy(Pair<Integer, Integer> currentPos, int row, int col) {
+        return (Math.abs(row - currentPos.getX()) == ONE_STEP || Math.abs(row - currentPos.getX()) == NO_STEP) &&
+                (Math.abs(col - currentPos.getY()) == ONE_STEP || Math.abs(col - currentPos.getY()) == NO_STEP);
     }
 
     @Test
     void testNotAllowedMove() {
-        Piece piece = new PieceImpl(INITIAL_POSITION, ((currentPos, row, col) -> {
-            return (currentPos.getX() + row) == (currentPos.getY() + col);
-        }));
+        Piece piece = new PieceImpl(INITIAL_POSITION, ((currentPos, row, col) -> 
+                (currentPos.getX() + row) == (currentPos.getY() + col))
+        );
         Pair<Integer, Integer> wrongPosition = new Pair<>(INITIAL_POSITION.getX() + 2, INITIAL_POSITION.getY());
         assertThrows(IllegalStateException.class, () -> piece.move(wrongPosition.getX(), wrongPosition.getY()));
-
     }
 }

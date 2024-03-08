@@ -22,8 +22,8 @@ public class LogicsImpl implements Logics {
 	private void initLogic(int size, Pair<Integer, Integer> initialKnightPosition) {
 		PiecesFactory factory = new PiecesFactoryImpl();
 		this.size = size;
-		this.knight = factory.makeKnight(initialKnightPosition);
-		this.pawn = factory.makePawn(randomEmptyPosition());
+		this.knight = factory.createKnight(initialKnightPosition);
+		this.pawn = factory.createPawn(randomEmptyPosition());
 	}
     
 	private final Pair<Integer,Integer> randomEmptyPosition(){
