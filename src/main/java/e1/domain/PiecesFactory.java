@@ -2,6 +2,7 @@ package e1.domain;
 
 import e1.Pair;
 import e1.domain.pieces.knight.Knight;
+import e1.domain.pieces.pawn.Pawn;
 
 public interface PiecesFactory {
 
@@ -12,9 +13,8 @@ public interface PiecesFactory {
     Knight createKnight(Pair<Integer, Integer> position);
 
     /**
-     *
      * @param position
      * @return pawn piece at given position
      */
-    Piece createPawn(Pair<Integer, Integer> position);
+    Pawn createPawn(Pair<Integer, Integer> position);
 }
