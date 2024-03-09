@@ -1,8 +1,8 @@
 package e1.domain.pieces.knight;
 
 import e1.Pair;
-import e1.domain.Piece;
-import e1.domain.PieceImpl;
+import e1.domain.pieces.Piece;
+import e1.domain.pieces.PieceImpl;
 
 public class KnightImpl implements Knight {
     private final Piece piece;

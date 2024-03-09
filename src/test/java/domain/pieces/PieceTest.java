@@ -1,8 +1,8 @@
 package domain.pieces;
 
 import e1.Pair;
-import e1.domain.Piece;
-import e1.domain.PieceImpl;
+import e1.domain.pieces.Piece;
+import e1.domain.pieces.PieceImpl;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

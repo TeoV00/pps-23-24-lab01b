@@ -1,9 +1,8 @@
 package e1.domain.pieces.pawn;
 
 import e1.Pair;
-import e1.domain.Piece;
-import e1.domain.PieceImpl;
-import e1.domain.pieces.strategies.FixedPositionMoveStrategy;
+import e1.domain.pieces.Piece;
+import e1.domain.pieces.PieceImpl;
 
 public class PawnImpl implements Pawn {
 

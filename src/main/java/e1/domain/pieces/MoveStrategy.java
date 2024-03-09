@@ -1,4 +1,4 @@
-package e1.domain.pieces.strategies;
+package e1.domain.pieces;
 
 import e1.Pair;
 

@@ -1,6 +1,8 @@
-package e1.domain;
+package e1.domain.gamegrid;
 
 import e1.Pair;
+import e1.domain.pieces.PiecesFactory;
+import e1.domain.pieces.PiecesFactoryImpl;
 import e1.domain.pieces.pawn.Pawn;
 import java.util.Random;
 import java.util.Set;

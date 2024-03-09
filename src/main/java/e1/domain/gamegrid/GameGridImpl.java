@@ -1,4 +1,4 @@
-package e1.domain;
+package e1.domain.gamegrid;
 
 import e1.Pair;
 import e1.domain.pieces.knight.Knight;

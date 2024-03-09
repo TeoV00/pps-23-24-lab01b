@@ -1,8 +1,8 @@
 package domain.pieces;
 
 import e1.Pair;
-import e1.domain.PiecesFactory;
-import e1.domain.PiecesFactoryImpl;
+import e1.domain.pieces.PiecesFactory;
+import e1.domain.pieces.PiecesFactoryImpl;
 import e1.domain.pieces.knight.Knight;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;

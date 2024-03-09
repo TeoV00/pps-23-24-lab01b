@@ -1,5 +1,8 @@
 package e1;
 
+import e1.logic.Logics;
+import e1.logic.LogicsImpl;
+
 import javax.swing.*;
 import java.util.*;
 import java.util.Map.Entry;

@@ -1,6 +1,11 @@
+package domain.gamegrid;
+
 import domain.pieces.KnightMoves;
 import e1.Pair;
-import e1.domain.*;
+import e1.domain.gamegrid.GameGrid;
+import e1.domain.gamegrid.GameGridImpl;
+import e1.domain.pieces.PiecesFactory;
+import e1.domain.pieces.PiecesFactoryImpl;
 import e1.domain.pieces.pawn.Pawn;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

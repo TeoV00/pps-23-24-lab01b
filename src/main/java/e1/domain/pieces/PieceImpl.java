@@ -1,7 +1,6 @@
-package e1.domain;
+package e1.domain.pieces;
 
 import e1.Pair;
-import e1.domain.pieces.strategies.MoveStrategy;
 
 import java.util.Objects;
 

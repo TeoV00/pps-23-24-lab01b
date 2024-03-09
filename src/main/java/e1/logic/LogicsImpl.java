@@ -1,9 +1,9 @@
-package e1;
+package e1.logic;
 
-import e1.domain.*;
-import e1.domain.pieces.pawn.Pawn;
-
-import java.util.*;
+import e1.Pair;
+import e1.domain.gamegrid.GameGrid;
+import e1.domain.gamegrid.GridFactory;
+import e1.domain.gamegrid.GridFactoryImpl;
 
 public class LogicsImpl implements Logics {
 
