@@ -2,13 +2,9 @@ package e1.domain;
 
 import e1.Pair;
 import e1.domain.pieces.pawn.Pawn;
-
-import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
-import java.util.function.IntSupplier;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class GridFactoryImpl implements GridFactory {
@@ -24,6 +20,11 @@ public class GridFactoryImpl implements GridFactory {
     @Override
     public GameGrid makeGameGridRandomKnightWithPawns(int height, int width, int pawnsAmount) {
         return createGameGrid(height, width, pawnsAmount, randomPosition(height, width));
+    }
+
+    @Override
+    public GameGrid makeGameGridInitialPositionKnightWithPawns(int height, int width, int pawnsAmount, Pair<Integer, Integer> initialKnightPosition) {
+        return createGameGrid(height, width, pawnsAmount, initialKnightPosition);
     }
 
     private GameGrid createGameGrid(int height, int width, int pawnsAmount, Pair<Integer, Integer> knightPosition) {

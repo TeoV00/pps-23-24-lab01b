@@ -4,17 +4,15 @@ import e1.domain.GridFactory;
 import e1.domain.GridFactoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.Optional;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class GridFactoryTest {
 
-    public static final int GRID_WIDTH = 2;
-    public static final int GRID_HEIGHT = 2;
+    public static final int GRID_WIDTH = 5;
+    public static final int GRID_HEIGHT = 5;
     private GridFactory gridFactory;
 
     @BeforeEach
@@ -32,10 +30,25 @@ public class GridFactoryTest {
     }
 
     @Test
-    void testMakeGameGridWithAMountOfRandomPawnsAndOneKnight() {
+    void testMakeGameGridWithAMountOfRandomPawnsAndOneRandomKnight() {
         int pawnsAmount = 3;
         GameGrid gameGrid = this.gridFactory.makeGameGridRandomKnightWithPawns(GRID_HEIGHT, GRID_WIDTH, pawnsAmount);
         assertEquals(pawnsAmount, amountOfPawnsInGameGrid(gameGrid));
+    }
+
+    @Test
+    void testMakeGameGridWithRandomPawnsAndInitialKnightPosition() {
+        int pawnsAmount = 3;
+        var initialKnightPosition = new Pair<>(2,2);
+        GameGrid gameGrid = this.gridFactory.makeGameGridInitialPositionKnightWithPawns(GRID_HEIGHT,
+                                                                                        GRID_WIDTH,
+                                                                                        pawnsAmount,
+                                                                                        initialKnightPosition
+                                                                                        );
+        assertAll(
+                () -> assertEquals(pawnsAmount, amountOfPawnsInGameGrid(gameGrid)),
+                () -> assertTrue(gameGrid.hasKnight(initialKnightPosition.getX(), initialKnightPosition.getY()))
+        );
     }
 
     private Optional<Pair<Integer, Integer>> findKnightPosition(GameGrid gameGrid) {
