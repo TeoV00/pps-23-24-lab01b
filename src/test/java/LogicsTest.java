@@ -1,5 +1,7 @@
 import domain.pieces.KnightMoves;
 import e1.*;
+import e1.logic.Logics;
+import e1.logic.LogicsImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
