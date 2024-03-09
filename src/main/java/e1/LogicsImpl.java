@@ -7,28 +7,17 @@ import java.util.*;
 
 public class LogicsImpl implements Logics {
 
-	private final Random random = new Random();
-	private GameGrid gameGrid;
+	private final GameGrid gameGrid;
 
     public LogicsImpl(int size) {
-    	this.initLogic(size, randomEmptyPosition(size));
+		GridFactory gridFactory = new GridFactoryImpl();
+		this.gameGrid = gridFactory.makeGameGridRandomKnightWithPawns(size, size, 1);
     }
 
 	public LogicsImpl(int size, Pair<Integer, Integer> initialKnightPosition){
-		initLogic(size, initialKnightPosition);
+		GridFactory gridFactory = new GridFactoryImpl();
+		this.gameGrid = gridFactory.makeGameGridInitialPositionKnightWithPawns(size, size, 1, initialKnightPosition);
 	}
-
-	private void initLogic(int size, Pair<Integer, Integer> initialKnightPosition) {
-		PiecesFactory factory = new PiecesFactoryImpl();
-		Pawn pawn = factory.createPawn(randomEmptyPosition(size));
-		this.gameGrid = new GameGridImpl(size, size, factory.createKnight(initialKnightPosition), Set.of(pawn));
-	}
-    
-	private final Pair<Integer,Integer> randomEmptyPosition(int size){
-    	Pair<Integer,Integer> pos = new Pair<>(this.random.nextInt(size),this.random.nextInt(size));
-    	// the recursive call below prevents clash with an existing pawn
-    	return /*this.pawn!=null && this.pawn.position().equals(pos) ? randomEmptyPosition() : */ pos;
-    }
 
 	@Override
 	public boolean hit(int row, int col) {
