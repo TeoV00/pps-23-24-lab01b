@@ -52,7 +52,7 @@ classDiagram
             <<interface>>
             + makeGameGridRandomKnightWithoutPawns(int h, int w) GameGrid
             + makeGameGridRandomKnightWithPawns(int h, int w, int pawnsAmount) GameGrid
-            + makeGameGridInitialPositionKnightWithPawns(int h, int w, int pawnsAmount, Pair~Integer,Integer~ knightPos) GameGrid
+            + makeGameGridInitialPositionKnightWithPawns(int h, int w, int pawnsAmount, \n Pair~Integer,Integer~ knightPos) GameGrid
         }
 
         class PiecesFactory {
