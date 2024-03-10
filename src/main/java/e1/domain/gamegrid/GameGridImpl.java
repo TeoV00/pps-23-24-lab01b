@@ -41,10 +41,11 @@ public class GameGridImpl implements GameGrid {
         }
         if (this.knight.isAllowedMove(row, col)) {
             this.knight.move(row, col);
-            Optional<Pawn> pawnToRemove = this.pawns.stream()
+            /*Optional<Pawn> pawnToRemove = this.pawns.stream()
                     .filter(p -> p.position().equals(this.knight.position()))
                     .findFirst();
             pawnToRemove.ifPresent(this.pawns::remove);
+            */
         }
     }
 

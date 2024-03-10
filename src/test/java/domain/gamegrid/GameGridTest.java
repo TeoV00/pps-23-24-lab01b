@@ -63,12 +63,12 @@ public class GameGridTest {
         assertAll(
                 pawnInitiallyInPosition(PAWN_TO_EAT_POS),
                 knightMovedToPawnPosition(PAWN_TO_EAT_POS),
-                pawnEatenByKnightAndRemoved()
+                pawnEatenByKnight()
         );
     }
 
-    private Executable pawnEatenByKnightAndRemoved() {
-        return () -> assertFalse(gameGrid.hasPawn(PAWN_TO_EAT_POS.getX(), PAWN_TO_EAT_POS.getY()));
+    private Executable pawnEatenByKnight() {
+        return () -> assertTrue(gameGrid.hasPawn(PAWN_TO_EAT_POS.getX(), PAWN_TO_EAT_POS.getY()));
     }
 
     private Executable pawnInitiallyInPosition(Pair<Integer, Integer > position) {
