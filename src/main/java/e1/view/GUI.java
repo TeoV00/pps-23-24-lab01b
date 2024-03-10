@@ -1,5 +1,6 @@
-package e1;
+package e1.view;
 
+import e1.Pair;
 import e1.logic.Logics;
 import e1.logic.LogicsImpl;
 
