@@ -12,15 +12,15 @@ import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PawnTest {
+public class PawnTest extends PieceTest {
 
     private final Pair<Integer, Integer> POSITION = new Pair<>(2,2);
-    private Pawn pawn;
+    private Pawn immovablePawn;
 
     @BeforeEach
     void initTest() {
         PiecesFactory factory = new PiecesFactoryImpl();
-        this.pawn = factory.createPawn(POSITION);
+        this.immovablePawn = factory.createPawn(POSITION);
     }
 
     @Test
@@ -43,15 +43,15 @@ public class PawnTest {
     }
 
     private Executable isNotAllowedMove(Pair<Integer, Integer> position) {
-        return () -> assertFalse(this.pawn.isAllowedMove(position.getX(), position.getY()));
+        return () -> assertFalse(this.immovablePawn.isAllowedMove(position.getX(), position.getY()));
     }
 
     private Executable moveThrowsException(Pair<Integer, Integer> position) {
-        return () -> assertThrows(IllegalStateException.class, () -> this.pawn.move(position.getX(), position.getY()));
+        return () -> assertThrows(IllegalStateException.class, () -> this.immovablePawn.move(position.getX(), position.getY()));
     }
 
     private Executable positionDoesNotChange() {
-        return () -> assertEquals(POSITION, this.pawn.position());
+        return () -> assertEquals(POSITION, this.immovablePawn.position());
     }
 
 }
