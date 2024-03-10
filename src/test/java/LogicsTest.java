@@ -46,62 +46,6 @@ public class LogicsTest {
         );
     }
 
-    @Test
-    void testMoveKnightTopLeft() {
-        var newPosition = KnightMoves.TOP_LEFT.calculateNewPosition(this.knightPosition);
-        this.logics.hit(newPosition.getX(), newPosition.getY());
-        assertTrue(this.logics.hasKnight(newPosition.getX(), newPosition.getY()));
-    }
-
-    @Test
-    void testMoveKnightTopRight() {
-        var newPosition = KnightMoves.TOP_RIGHT.calculateNewPosition(this.knightPosition);
-        this.logics.hit(newPosition.getX(), newPosition.getY());
-        assertTrue(this.logics.hasKnight(newPosition.getX(), newPosition.getY()));
-    }
-
-    @Test
-    void testMoveKnightBottomLeft() {
-        var newPosition = KnightMoves.BOTTOM_LEFT.calculateNewPosition(this.knightPosition);
-        this.logics.hit(newPosition.getX(), newPosition.getY());
-        assertTrue(this.logics.hasKnight(newPosition.getX(), newPosition.getY()));
-    }
-
-    @Test
-    void testMoveKnightBottomRight() {
-        var newPosition = KnightMoves.BOTTOM_RIGHT.calculateNewPosition(this.knightPosition);
-        this.logics.hit(newPosition.getX(), newPosition.getY());
-        assertTrue(this.logics.hasKnight(newPosition.getX(), newPosition.getY()));
-    }
-
-    @Test
-    void testMoveKnightRightTop() {
-        var newPosition = KnightMoves.RIGHT_TOP.calculateNewPosition(this.knightPosition);
-        this.logics.hit(newPosition.getX(), newPosition.getY());
-        assertTrue(this.logics.hasKnight(newPosition.getX(), newPosition.getY()));
-    }
-
-    @Test
-    void testMoveKnightRightBottom() {
-        var newPosition = KnightMoves.RIGHT_BOTTOM.calculateNewPosition(this.knightPosition);
-        this.logics.hit(newPosition.getX(), newPosition.getY());
-        assertTrue(this.logics.hasKnight(newPosition.getX(), newPosition.getY()));
-    }
-
-    @Test
-    void testMoveKnightLeftTop() {
-        var newPosition = KnightMoves.LEFT_TOP.calculateNewPosition(this.knightPosition);
-        this.logics.hit(newPosition.getX(), newPosition.getY());
-        assertTrue(this.logics.hasKnight(newPosition.getX(), newPosition.getY()));
-    }
-
-    @Test
-    void testMoveKnightLeftBottom() {
-        var newPosition = KnightMoves.LEFT_BOTTOM.calculateNewPosition(this.knightPosition);
-        this.logics.hit(newPosition.getX(), newPosition.getY());
-        assertTrue(this.logics.hasKnight(newPosition.getX(), newPosition.getY()));
-    }
-
     private Pair<Integer, Integer> calculateNewKnightPosition(Integer rowOffset, Integer colOffset) {
         return new Pair<>(this.knightPosition.getX() + rowOffset, this.knightPosition.getY() + colOffset);
     }
