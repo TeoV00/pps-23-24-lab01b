@@ -1,9 +1,6 @@
-package domain.gamegrid;
+package e1.domain.gamegrid;
 
 import e1.Pair;
-import e1.domain.gamegrid.GameGrid;
-import e1.domain.gamegrid.GridFactory;
-import e1.domain.gamegrid.GridFactoryImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.util.Optional;

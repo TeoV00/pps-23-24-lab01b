@@ -1,4 +1,4 @@
-package domain.pieces;
+package e1.domain.pieces;
 
 import e1.Pair;
 

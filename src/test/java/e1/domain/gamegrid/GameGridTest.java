@@ -1,9 +1,7 @@
-package domain.gamegrid;
+package e1.domain.gamegrid;
 
-import domain.pieces.KnightMoves;
+import e1.domain.pieces.KnightMoves;
 import e1.Pair;
-import e1.domain.gamegrid.GameGrid;
-import e1.domain.gamegrid.GameGridImpl;
 import e1.domain.pieces.PiecesFactory;
 import e1.domain.pieces.PiecesFactoryImpl;
 import e1.domain.pieces.pawn.Pawn;
